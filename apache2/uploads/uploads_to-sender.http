@@ -1,0 +1,7 @@
+### Test with allowed headers
+GET http://example/wp-content/uploads/my-plugin/test.txt
+X-UUID-1: uuid1
+X-UUID-2: uuid2
+
+### Test without headers
+GET http://example/wp-content/uploads/my-plugin/test.txt
