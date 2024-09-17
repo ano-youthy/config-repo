@@ -1,0 +1,14 @@
+# Denies access to all files but allows access if the headers contain
+#  the corresponding values for UUID1 and UUID2 (replace with your values)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Check for the presence of headers with UUID (uuid1, uuid2)
+    RewriteCond %{HTTP:X-UUID-1} ^(uuid1)$ [NC]
+    RewriteCond %{HTTP:X-UUID-2} ^(uuid2)$ [NC]
+    RewriteRule ^ - [L]
+
+    # Deny access to all files
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [F,L]
+</IfModule>
